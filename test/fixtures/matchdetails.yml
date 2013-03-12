@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  match: 
+  bat_team_id: 1
+  bowl_team_id: 1
+  score: 1
+  wickets: 1
+  overs: 1
+  innings: 1
+  extras: 1
+
+two:
+  match: 
+  bat_team_id: 1
+  bowl_team_id: 1
+  score: 1
+  wickets: 1
+  overs: 1
+  innings: 1
+  extras: 1

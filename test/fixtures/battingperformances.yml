@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  matchdetail: 
+  batsman_id: 1
+  bat_order: 1
+  score_seq: MyString
+  runs: 1
+  wicketmode: 
+  bowler_id: 1
+  fielder_id: 1
+
+two:
+  matchdetail: 
+  batsman_id: 1
+  bat_order: 1
+  score_seq: MyString
+  runs: 1
+  wicketmode: 
+  bowler_id: 1
+  fielder_id: 1

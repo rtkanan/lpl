@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Match date:</b>
+  <%= @match.match_date %>
+</p>
+
+<p>
+  <b>Team one:</b>
+  <%= @match.team_one.name %>
+</p>
+
+<p>
+  <b>Team two:</b>
+  <%= @match.team_two.name %>
+</p>
+
+<p>
+  <b>Team won:</b>
+  <%= @match.team_won %>
+</p>
+
+<p>
+  <b>Season:</b>
+  <%= @match.season.name %>
+</p>
+
+<p>
+  <b>Mom:</b>
+  <%= @match.mom %>
+</p>
+
+<p>
+  <b>Toss won:</b>
+  <%= @match.toss_won.name if @match.toss_won %>
+</p>
+
+<p>
+  <b>Toss selection:</b>
+  <%= @match.tossselection.option if @match.tossselection %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @match.status %>
+</p>
+
+<p>
+  <b>Remarks:</b>
+  <%= @match.remarks %>
+</p>
+
+
+<%= link_to 'Edit', edit_season_match_url(@match.season, @match) %> |
+<%= link_to 'Back', season_matches_url(@match.season) %>

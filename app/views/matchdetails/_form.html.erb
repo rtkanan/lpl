@@ -1,0 +1,102 @@
+<%= form_for([@match, @matchdetail]) do |f| %>
+  <% if @matchdetail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@matchdetail.errors.count, "error") %> prohibited this matchdetail from being saved:</h2>
+
+      <ul>
+      <% @matchdetail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% if false %>
+  <div class="field">
+    <%= f.label :bat_team_id %><br />
+    <%= collection_select(:matchdetail, :bat_team_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+  </div>
+  <div class="field">
+    <%= f.label :bowl_team_id %><br />
+    <%= collection_select(:matchdetail, :bowl_team_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+  </div>
+<% end %>
+  <h3>Batting - <%= @matchdetail.bat_team.name %></h3>
+  <table>
+    <tr>
+      <td>Order</td>
+      <td>Batsman</td>
+      <td>Score Sequence</td>
+      <td>Runs</td>
+      <td>Wicket Mode</td>
+      <td>Bowler</td>
+      <td>Fielder</td>
+    </tr>
+    <%= f.fields_for :battingperformances do |batperf| %>
+      <tr>
+        <td><%= batperf.text_field :bat_order, :size => 2, :disabled=>true %></td>
+        <td>
+          <%= batperf.collection_select(:batsman_id, @bat_players, :id, :nick_name, options ={:prompt => "Select a player"}, :class =>"player" ) %>
+        </td>
+        <td><%= batperf.text_field :score_seq %></td>
+        <td><%= batperf.text_field :runs, :size => 3 %></td>
+        <td>
+            <%= batperf.collection_select(:wicketmode_id, Wicketmode.all, :id, :mode, options ={:prompt => "Select the mode"}, :class =>"wicketmode" ) %>
+        </td>
+        <td>
+            <%= batperf.collection_select(:bowler_id, @bowl_players, :id, :nick_name, options ={:prompt => "Select a player"}, :class =>"player" ) %>
+        </td>
+        <td>
+            <%= batperf.collection_select(:fielder_id, @bowl_players, :id, :nick_name, options ={:prompt => "Select a player"}, :class =>"player" ) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <h3>Bowling - <%= @matchdetail.bowl_team.name %></h3>
+  <table>
+    <tr>
+      <td>Over</td>
+      <td>Bowler</td>
+      <td>Bowling Sequence</td>
+      <td>Conceded</td>
+      <td>Wickets</td>
+    </tr>
+    <%= f.fields_for :bowlingperformances do |bowlperf| %>
+      <tr>
+        <td><%= bowlperf.text_field :over_no, :size=>2, :disabled=>true %></td>
+        <td>
+            <%= bowlperf.collection_select(:bowler_id, @bowl_players, :id, :nick_name, options ={:prompt => "Select a player"}, :class =>"player" ) %>
+        </td>
+        <td><%= bowlperf.text_field :bowl_seq %></td>
+        <td><%= bowlperf.text_field :conceded, :size=>3 %></td>
+        <td><%= bowlperf.text_field :wickets, :size=>3 %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+  <br/>
+  <div class="field">
+    <%= f.label :score %><br />
+    <%= f.number_field :score %>
+  </div>
+  <div class="field">
+    <%= f.label :wickets %><br />
+    <%= f.number_field :wickets %>
+  </div>
+  <div class="field">
+    <%= f.label :overs %><br />
+    <%= f.number_field :overs %>
+  </div>
+  <div class="field">
+    <%= f.label :innings %><br />
+    <%= f.number_field :innings, :value => @innings, :readonly => true %>
+  </div>
+  <div class="field">
+    <%= f.label :extras %><br />
+    <%= f.number_field :extras %>
+  </div>
+  <%= f.hidden_field :bat_team_id, :value=>@matchdetail.bat_team.id %>
+  <%= f.hidden_field :bowl_team_id, :value=>@matchdetail.bowl_team.id %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

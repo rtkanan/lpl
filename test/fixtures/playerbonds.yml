@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  player: 
+  team: 
+  season: 
+  auction_price: MyString
+  grade: MyString
+
+two:
+  player: 
+  team: 
+  season: 
+  auction_price: MyString
+  grade: MyString

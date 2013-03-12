@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from: 2012-12-28
+  to: 2012-12-28
+  winners: 1
+  mos: 1
+  name: MyString
+
+two:
+  from: 2012-12-28
+  to: 2012-12-28
+  winners: 1
+  mos: 1
+  name: MyString

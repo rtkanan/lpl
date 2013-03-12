@@ -1,0 +1,61 @@
+<h1><%= @match.team_one.name %> vs <%= @match.team_two.name %> </h1>
+<h2>Match <%= @match.id %></h2>
+<% @matchdetails.each do |matchdetail| %>
+    <h3>Innings <%= matchdetail.innings %> </h3>
+    <b><%= matchdetail.bat_team.name %> - <%= matchdetail.score %> / <%= matchdetail.wickets %> (<%= matchdetail.overs %> Overs)</b> <br/>
+    <table>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Sequence</td>
+        <td>Runs</td>
+      </tr>
+    <% matchdetail.battingperformances.each do |batperf| %>
+      <tr>
+        <td><%= batperf.batsman.nick_name if batperf.batsman %></td>
+        <% if batperf.batsman %>
+          <td><%= batperf.wicketmode.mode %> 
+          <% unless batperf.wicketmode.id == 7 or batperf.wicketmode.id == 8 %>
+            <% if batperf.wicketmode.id == 2 or batperf.wicketmode.id == 3 %>
+              <%= batperf.bowler.nick_name %>
+            <% end %>
+            <% if batperf.wicketmode.id == 1 or batperf.wicketmode.id == 2 or batperf.wicketmode.id == 4 or batperf.wicketmode.id == 5 %>
+             b <%= batperf.bowler.nick_name %></td>
+            <% end %>
+          <% end %>
+        <% end %>
+        <td><%= batperf.score_seq if batperf.batsman %></td>
+        <td><%= batperf.runs if batperf.batsman %></td>
+        <td></td>
+      </tr>
+    <% end %>
+    </table>
+    Extras: <%= matchdetail.extras %>
+    <tr><h4>Bowling</h4></tr>
+    <table>
+    <tr>
+      <td></td>
+      <td>Over</td>
+      <td>Sequence</td>
+      <td>Runs</td>
+      <td>Wickets</td>
+    </tr>
+    <% matchdetail.bowlingperformances.each do |bowlperf| %>
+      <tr>
+        <td><%= bowlperf.bowler.nick_name if bowlperf.bowler %></td>
+        <td><%= bowlperf.over_no if bowlperf.bowler %></td>
+        <td><%= bowlperf.bowl_seq if bowlperf.bowler %></td>
+        <td><%= bowlperf.conceded if bowlperf.bowler %></td>
+        <td><%= bowlperf.wickets if bowlperf.bowler %></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= link_to 'Edit', edit_matchdetail_path(matchdetail) %>
+    <%= link_to 'Destroy', season_match_matchdetail_url(@season, @match, matchdetail), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<br />
+
+<%= link_to 'Add Innings Details', new_season_match_matchdetail_path if @matchdetails.count < 2 %>
+<br />
+<%= link_to 'Fixtures', season_matches_path(@season) %>

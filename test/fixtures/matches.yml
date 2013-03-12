@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  match_date: 2013-01-14 21:23:31
+  team_one_id: 1
+  team_two_id: 1
+  team_won_id: 1
+  season: 
+  mom_id: 1
+  toss_won_id: 1
+  toss_selection: MyString
+  status: MyString
+  remarks: MyString
+
+two:
+  match_date: 2013-01-14 21:23:31
+  team_one_id: 1
+  team_two_id: 1
+  team_won_id: 1
+  season: 
+  mom_id: 1
+  toss_won_id: 1
+  toss_selection: MyString
+  status: MyString
+  remarks: MyString

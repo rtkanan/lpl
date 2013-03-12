@@ -1,0 +1,37 @@
+<%= form_for([@season, @playerbond]) do |f| %>
+  <% if @playerbond.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@playerbond.errors.count, "error") %> prohibited this playerbond from being saved:</h2>
+
+      <ul>
+      <% @playerbond.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :player %><br />
+    <%= collection_select(:playerbond, :player_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :class =>"player") %>
+  </div>
+  <div class="field">
+    <%= f.label :team %><br />
+    <%= collection_select(:playerbond, :team_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+  </div>
+  <div class="field">
+    <%= f.label :season %><br />
+    <%= collection_select(:playerbond, :season_id, Season.all, :id, :name, options ={:prompt => "Select a Season"}, :class =>"season") %>
+  </div>
+  <div class="field">
+    <%= f.label :auction_price %><br />
+    <%= f.text_field :auction_price %>
+  </div>
+  <div class="field">
+    <%= f.label :grade %><br />
+    <%= f.text_field :grade %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

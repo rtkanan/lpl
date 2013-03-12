@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>From:</b>
+  <%= @season.from %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= @season.to %>
+</p>
+
+<p>
+  <b>Winners:</b>
+  <%= @season.winner.name if @season.winner %>
+</p>
+
+<p>
+  <b>Mos:</b>
+  <%= @season.mos.name if @season.mos %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= link_to @season.name, season_matches_url(@season) %>
+</p>
+
+
+<%= link_to 'Edit', edit_season_path(@season) %> |
+<%= link_to 'Back', seasons_path %>

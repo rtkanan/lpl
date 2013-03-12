@@ -1,0 +1,37 @@
+<%= form_for(@season) do |f| %>
+  <% if @season.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@season.errors.count, "error") %> prohibited this season from being saved:</h2>
+
+      <ul>
+      <% @season.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :from %><br />
+    <%= f.date_select :from %>
+  </div>
+  <div class="field">
+    <%= f.label :to %><br />
+    <%= f.date_select :to %>
+  </div>
+  <div class="field">
+    <%= f.label :winners %><br />
+    <%= collection_select(:season, :winner_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+  </div>
+  <div class="field">
+    <%= f.label :mos %><br />
+    <%= collection_select(:season, :mos_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :class =>"player") %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

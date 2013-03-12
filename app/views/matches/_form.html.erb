@@ -1,0 +1,87 @@
+<%= form_for([@season, @match] ) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :match_date %><br />
+    <%= f.datetime_select :match_date %>
+  </div>
+  <%#= form_tag(update_player_season_matches_path(@season), :method=>'get', :class => 'form-horizontal', :id => 'update_team_one_player') do %>
+  <div class="field">
+    <%= f.label :team_one %><br />
+    <%= collection_select(:match, :team_one_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team", :input_html => {:rel => "seasons/#{@season.id}/matches/players_by_team"}, :onchange => "matchplayers_team_one()") %>
+  </div>
+  <%# end %>
+  
+  <%= f.fields_for :matchplayers do |matchplayer| %>
+    <%= matchplayer.hidden_field :team_id, :value=>'' %>
+    <div class="field">
+      <%= matchplayer.label 'Team One Player' %><br />
+      <%= matchplayer.collection_select(:player_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :class =>"player" ) %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :team_two %><br />
+    <%= collection_select(:match, :team_two_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team", :onchange => "matchplayers_team_two()") %>
+  </div>
+  <%= f.fields_for :matchplayers do |matchplayer| %>
+    <%= matchplayer.hidden_field :team_id, :value=>'' %>
+    <div class="field">
+      <%= matchplayer.label 'Team Two Player' %><br />
+      <%= matchplayer.collection_select(:player_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :class =>"player" ) %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :team_won %><br />
+    <%= collection_select(:match, :team_won_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+  </div>
+  <div class="field">
+    <%= f.label :mom_id %><br />
+    <%= collection_select(:match, :mom_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :class =>"player") %>
+  </div>
+  <div class="field">
+    <%= f.label :toss_won %><br />
+    <%= collection_select(:match, :toss_won_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+  </div>
+  <div class="field">
+    <%= f.label "Toss selection" %><br />
+    <%= collection_select(:match, :tossselection_id, Tossselection.all, :id, :option, options ={:prompt => "Select the option"}, :class =>"tossselection") %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :remarks %><br />
+    <%= f.text_field :remarks %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script> 
+function matchplayers_team_two() {
+  for (var i=8; i<16; i++) {
+    var id2 = "match_matchplayers_attributes_" + i + "_team_id";
+    document.getElementById(id2).value = document.getElementById("match_team_two_id").value;
+  }
+}
+
+function matchplayers_team_one()
+{
+  for (var i=0; i<8; i++) {
+    var id = "match_matchplayers_attributes_" + i + "_team_id";
+    document.getElementById(id).value = document.getElementById("match_team_one_id").value;
+  }  
+}
+</script>

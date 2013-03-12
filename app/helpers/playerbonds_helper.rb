@@ -1,0 +1,2 @@
+module PlayerbondsHelper
+end

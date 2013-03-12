@@ -1,0 +1,37 @@
+<h1>Listing playerbonds</h1>
+<h3><%= @season.name %></h3>
+<%= link_to 'New Playerbond', new_season_playerbond_path(@season) %>
+<%= link_to 'Fixture', season_matches_path(@season) %>
+<%= link_to 'Seasons', seasons_path %>
+
+<table>
+
+  <tr>
+    <th>Player</th>
+    <th>Team</th>
+    <th>Auction price</th>
+    <th>Grade</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @playerbonds.each do |playerbond| %>
+  <tr>
+    <td><%= playerbond.player.name %></td>
+    <td><%= playerbond.team.name %></td>
+    <td><%= playerbond.auction_price %></td>
+    <td><%= playerbond.grade %></td>
+    <td><%= link_to 'Show', season_playerbond_url(playerbond.season,playerbond) %></td>
+    <td><%= link_to 'Edit', edit_season_playerbond_path(playerbond.season,playerbond) %></td>
+    <td><%= link_to 'Destroy', season_playerbond_path(playerbond.season,playerbond), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Playerbond', new_season_playerbond_path(@season) %>
+<%= link_to 'Fixture', season_matches_path(@season) %>
+<%= link_to 'Seasons', seasons_path %>
+

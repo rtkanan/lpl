@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Match:</b>
+  <%= @matchdetail.match %>
+</p>
+
+<p>
+  <b>Bat team:</b>
+  <%= @matchdetail.bat_team_id %>
+</p>
+
+<p>
+  <b>Bowl team:</b>
+  <%= @matchdetail.bowl_team_id %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @matchdetail.score %>
+</p>
+
+<p>
+  <b>Wickets:</b>
+  <%= @matchdetail.wickets %>
+</p>
+
+<p>
+  <b>Overs:</b>
+  <%= @matchdetail.overs %>
+</p>
+
+<p>
+  <b>Innings:</b>
+  <%= @matchdetail.innings %>
+</p>
+
+<p>
+  <b>Extras:</b>
+  <%= @matchdetail.extras %>
+</p>
+
+
+<%= link_to 'Edit', edit_matchdetail_path(@matchdetail) %> |
+<%= link_to 'Back', matchdetails_path %>

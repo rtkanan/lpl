@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  matchdetail: 
+  bowler_id: 1
+  over_no: 1
+  bowl_seq: MyString
+  conceded: 1
+  wickets: 1
+
+two:
+  matchdetail: 
+  bowler_id: 1
+  over_no: 1
+  bowl_seq: MyString
+  conceded: 1
+  wickets: 1

@@ -1,0 +1,21 @@
+<%= form_for([@match, :matchplayers]) do |f| %>
+
+
+  <% f.fields_for :matchplayers do |matchplayer| %> 
+  <div class="field">
+    <%=   matchplayer.label :match %><br />
+    <%= matchplayer.text_field :match %>
+  </div>
+  <div class="field">
+    <%= matchplayer.label :team %><br />
+    <%= matchplayer.text_field :team %>
+  </div>
+  <div class="field">
+    <%= matchplayer.label :player %><br />
+    <%= matchplayer.text_field :player %>
+  </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

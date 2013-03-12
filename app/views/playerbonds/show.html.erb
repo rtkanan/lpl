@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Player:</b>
+  <%= @playerbond.player.name %>
+</p>
+
+<p>
+  <b>Team:</b>
+  <%= @playerbond.team.name %>
+</p>
+
+<p>
+  <b>Season:</b>
+  <%= @playerbond.season.name %>
+</p>
+
+<p>
+  <b>Auction price:</b>
+  <%= @playerbond.auction_price %>
+</p>
+
+<p>
+  <b>Grade:</b>
+  <%= @playerbond.grade %>
+</p>
+
+
+<%= link_to 'Edit', edit_playerbond_path(@playerbond) %> |
+<%= link_to 'Back', playerbonds_path %>
