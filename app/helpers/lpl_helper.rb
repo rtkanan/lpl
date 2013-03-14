@@ -1,0 +1,2 @@
+module LplHelper
+end
