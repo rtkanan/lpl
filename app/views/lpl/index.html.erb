@@ -1,4 +1,4 @@
 <h1>Lpl</h1>
 
 Current Season <br/>
-<%= link_to @season.name, season_matches_url(@season) %>
+<%= link_to @season.name, season_matches_url(@season) if @season %>

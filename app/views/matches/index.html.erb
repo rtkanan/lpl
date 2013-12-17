@@ -26,5 +26,5 @@
 
 <br />
 
-<%= link_to 'New Match', new_season_match_url(@season) %>
+<%= link_to 'New Match', new_season_match_url(@season) if @season%>
 <%= link_to 'Seasons', seasons_url() %>

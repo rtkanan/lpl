@@ -10,7 +10,7 @@ development:
   pool: 5
   username: root
   password: mysql
-  socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
   
 
 # Warning: The database defined as "test" will be erased and
@@ -23,7 +23,7 @@ test:
   pool: 5
   username: root
   password: mysql
-  socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
   timeout: 5000
   
 production:
@@ -33,5 +33,5 @@ production:
   pool: 5
   username: root
   password: mysql
-  socket: /tmp/mysql.sock
+  #socket: /tmp/mysql.sock
   timeout: 5000
