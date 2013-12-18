@@ -13,12 +13,25 @@
 
   <div class="field">
     <%= f.label :player %><br />
-    <%= collection_select(:playerbond, :player_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :class =>"player") %>
+    <%#= collection_select(:playerbond, :player_id, Player.all, :id, :name, options ={:prompt => "Select a player"}, :multiple => true, :size => 15, :class =>"player") %>
+    <ul id="playerbond_player" class="scrollable">
+      <% Player.all.each do |i| %>
+        <li> <%= i.name %></li>
+      <% end %>
+    </ul>
   </div>
-  <div class="field">
     <%= f.label :team %><br />
-    <%= collection_select(:playerbond, :team_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+    <%#= collection_select(:playerbond, :team_id, Team.all, :id, :name, options ={:prompt => "Select a team"}, :class =>"team") %>
+    <% Team.all.each do |t| %>
+      <%= t.name %>
+      <ul id='playerbond_<%= t.name %>' class="scrollable">
+        
+      </ul>
+    <% end %>
+
+  <div class="field">
   </div>
+  <br />
   <div class="field">
     <%= f.label :season %><br />
     <%= collection_select(:playerbond, :season_id, Season.all, :id, :name, options ={:prompt => "Select a Season"}, :class =>"season") %>
